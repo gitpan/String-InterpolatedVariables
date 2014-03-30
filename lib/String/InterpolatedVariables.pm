@@ -8,16 +8,16 @@ use Readonly;
 
 =head1 NAME
 
-String::InterpolatedVariables - extract variable names from interpolated strings.
+String::InterpolatedVariables - Extract variable names from interpolated strings.
 
 
 =head1 VERSION
 
-Version 1.0.0
+Version 1.0.1
 
 =cut
 
-our $VERSION = '1.0.0';
+our $VERSION = '1.0.1';
 
 
 =head1 SYNOPSIS
@@ -25,23 +25,24 @@ our $VERSION = '1.0.0';
 	use String::InterpolatedVariables;
 
 	my $variables = String::InterpolatedVariables::extract(
-		'A $test->{'string'} from a PPI::Token::Quote::Double $object.'
+		'A $test->{string} from a PPI::Token::Quote::Double $object.'
 	);
 
-	# $variable now containts:
+	# $variables now contains:
 	# [
-	#     '$test->{'string'}',
+	#     '$test->{string}',
 	#     '$object',
 	# ]
 
 
 =head1 DESCRIPTION
 
-C<String::InterpolatedVariables> offers a way to extract the name of the variables that are present in interpolated strings.
+String::InterpolatedVariables offers a way to extract the name of the variables
+that are present in interpolated strings.
 
 This is particularly useful if you are using L<PPI> to parse Perl documents,
 and you want to know what variables would be interpolated inside the
-C<PPI::Token::Quote::Double> and C<PPI::Token::Quote::Interpolate> objects you
+L<PPI::Token::Quote::Double> and L<PPI::Token::Quote::Interpolate> objects you
 find there. A practical example of this use can be found in
 L<Perl::Critic::Policy::ValuesAndExpressions::PreventSQLInjection>.
 
@@ -86,16 +87,22 @@ Readonly::Scalar my $VARIABLES_REGEX => qr/
 Extract variables from interpolated strings.
 
 	my $variables = String::InterpolatedVariables::extract(
-		'A string that we would eval with $variable inside',
+		'A $test->{string} from a PPI::Token::Quote::Double $object.'
 	);
+
+	# $variables now contains:
+	# [
+	#     '$test->{string}',
+	#     '$object',
+	# ]
 
 Note that you need to pass the text of the string, even if the string itself is
 destined to be interpolated. In other words, passing C<"Test $test"> would not
 find any variables, as C<$test> would get interpolated by Perl before the
-string is passed to the C<extract()> function. This feature is particularly
-useful if you're using PPI to read Perl code, since PPI will give you access to
-the text of the string itself for strings that would otherwise be interpolated
-during execution.
+string is passed to the C<extract()> function. This function is thus more
+useful if you are using using a tool such as L<PPI> to read Perl code, since
+PPI will give you access to the text of the string itself for strings that
+would otherwise be interpolated during execution.
 
 =cut
 
