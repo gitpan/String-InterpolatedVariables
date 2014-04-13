@@ -16,6 +16,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
+            "Test::Deep" : "0",
             "Test::FailWarnings" : "0",
             "Test::More" : "0.94"
          }
@@ -35,7 +36,7 @@
    "provides" : {
       "String::InterpolatedVariables" : {
          "file" : "lib/String/InterpolatedVariables.pm",
-         "version" : "v1.0.1"
+         "version" : "v1.0.2"
       }
    },
    "release_status" : "stable",
@@ -51,5 +52,5 @@
          "url" : "https://github.com/guillaumeaubert/String-InterpolatedVariables"
       }
    },
-   "version" : "v1.0.1"
+   "version" : "v1.0.2"
 }
