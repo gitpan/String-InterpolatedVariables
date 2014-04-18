@@ -4,9 +4,9 @@
       "Guillaume Aubert <aubertg@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.132830",
+   "generated_by" : "Module::Build version 0.4205",
    "license" : [
-      "open_source"
+      "gpl_3"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -36,7 +36,7 @@
    "provides" : {
       "String::InterpolatedVariables" : {
          "file" : "lib/String/InterpolatedVariables.pm",
-         "version" : "v1.0.2"
+         "version" : "v1.0.3"
       }
    },
    "release_status" : "stable",
@@ -52,5 +52,5 @@
          "url" : "https://github.com/guillaumeaubert/String-InterpolatedVariables"
       }
    },
-   "version" : "v1.0.2"
+   "version" : "v1.0.3"
 }
